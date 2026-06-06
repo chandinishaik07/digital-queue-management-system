@@ -30,7 +30,7 @@ export default function Token() {
   // ── DYNAMIC QR URL ─────────────────────────────────────
   // Automatically uses the current hostname and port
   // Works on localhost and on network IP (192.168.x.x)
-  const MONITORING_URL = `http://${window.location.hostname}:5173/monitoring`
+  const MONITORING_URL = `${window.location.origin}/monitoring`
 
   // ── SHOW TOAST ─────────────────────────────────────────
   const showToast = (msg) => {
