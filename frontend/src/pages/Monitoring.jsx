@@ -23,11 +23,11 @@ export default function Monitoring() {
   }, [])
 
   const fetchData = () => {
-    fetch('http://10.135.14.157:5000/api/queue')
+    fetch('https://queuepro-backend-2pl7.onrender.com/api/queue')
       .then(r => r.json())
       .then(data => setQueue(Array.isArray(data) ? data : []))
 
-    fetch('http://10.135.14.157:5000/api/counters')
+    fetch('https://queuepro-backend-2pl7.onrender.com/api/counters')
       .then(r => r.json())
       .then(data => setCounters(Array.isArray(data) ? data : []))
   }

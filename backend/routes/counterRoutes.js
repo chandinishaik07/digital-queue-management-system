@@ -29,7 +29,7 @@ const admin = require('../middleware/admin')
 //   with the actual agent's name and email from the users collection.
 //   This way the frontend gets full agent info, not just an ID.
 // ─────────────────────────────────────────────────────────────
-router.get('/',auth,admin, async (req, res) => {
+router.get('/',async (req, res) => {
   try {
     // Find all counters and populate the assignedAgent field
     // .populate('assignedAgent') automatically fetches the User document
