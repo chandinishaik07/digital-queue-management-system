@@ -64,7 +64,7 @@ export default function Settings({ user, onLogout }) {
 
     try {
       // PUT request to update the user's name and email in MongoDB
-      const res = await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/auth/update/${user._id}`, {
+      const res = await fetch(`https://queuepro-backend-2pl7.onrender.com/api/auth/update/${user._id}`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ name, email })
@@ -114,7 +114,7 @@ export default function Settings({ user, onLogout }) {
 
     try {
       const res = await fetch(
-        `http://https://queuepro-backend-2pl7.onrender.com/api/auth/change-password/${user._id}`,
+        `https://queuepro-backend-2pl7.onrender.com/api/auth/change-password/${user._id}`,
         {
           method:  'PUT',
           headers: { 'Content-Type': 'application/json' },

@@ -83,7 +83,7 @@ export default function Token() {
     setLoading(true)
 
     try {
-      const res = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue/add', {
+      const res = await fetch('https://queuepro-backend-2pl7.onrender.com/api/queue/add', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({

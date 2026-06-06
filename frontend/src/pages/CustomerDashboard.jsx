@@ -30,7 +30,7 @@ export default function CustomerDashboard({ user }) {
   // so the customer sees live updates without manually refreshing
   useEffect(() => {
     const fetchQueue = () => {
-      fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue')
+      fetch('https://queuepro-backend-2pl7.onrender.com/api/queue')
         .then(r => r.json())
         .then(data => setQueue(Array.isArray(data) ? data : []))
     }
