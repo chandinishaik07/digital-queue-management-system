@@ -34,14 +34,14 @@ export default function Dashboard() {
   // Fetch both queue and analytics data when the page loads
   useEffect(() => {
     // Fetch all current queue tokens
-    fetch('http://localhost:5000/api/queue')
+    fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue')
       .then(r => r.json())
       .then(data => setQueue(Array.isArray(data) ? data : []))
 
     // Fetch analytics summary and 7-day history
     const token = localStorage.getItem('token')
 
-    fetch('http://localhost:5000/api/analytics', {
+    fetch('http://https://queuepro-backend-2pl7.onrender.com/api/analytics', {
       headers: {
         Authorization: `Bearer ${token}`
       }

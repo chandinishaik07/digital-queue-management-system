@@ -69,19 +69,19 @@ export default function Admin() {
     try {
       const token = localStorage.getItem('token')
       const [qRes, cRes, aRes, anRes] = await Promise.all([
-        fetch('http://localhost:5000/api/queue'),
-        fetch('http://localhost:5000/api/counters', {
+        fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue'),
+        fetch('http://https://queuepro-backend-2pl7.onrender.com/api/counters', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }),
-        fetch('http://localhost:5000/api/counters/agents', {
+        fetch('http://https://queuepro-backend-2pl7.onrender.com/api/counters/agents', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }),
 
-        fetch('http://localhost:5000/api/analytics', {
+        fetch('http://https://queuepro-backend-2pl7.onrender.com/api/analytics', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -165,7 +165,7 @@ export default function Admin() {
     const next = NEXT_STATUS[counter.status] || 'open'
     try {
       const token = localStorage.getItem('token')
-      await fetch(`http://localhost:5000/api/counters/${counter._id}/status`, {
+      await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/counters/${counter._id}/status`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body:    JSON.stringify({ status: next })
@@ -181,7 +181,7 @@ export default function Admin() {
   // Completes current serving token and starts serving next waiting token
   const callNext = async () => {
     try {
-      const res  = await fetch('http://localhost:5000/api/queue/next', { method: 'PUT' })
+      const res  = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue/next', { method: 'PUT' })
       const data = await res.json()
       showToast(data.message || `Now serving Token #${data.tokenNumber} — ${data.name}`)
       fetchAll()
@@ -195,7 +195,7 @@ export default function Admin() {
   // Used when a service issue needs to be closed manually
   const resolveIssue = async () => {
     try {
-      const res     = await fetch('http://localhost:5000/api/queue')
+      const res     = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue')
       const q       = await res.json()
       const serving = q.find(t => t.status === 'serving')
 
@@ -204,7 +204,7 @@ export default function Admin() {
         return
       }
       const token = localStorage.getItem('token')
-      await fetch(`http://localhost:5000/api/queue/${serving._id}`, {
+      await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/queue/${serving._id}`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}` },
         body:    JSON.stringify({ status: 'completed' })
@@ -221,7 +221,7 @@ export default function Admin() {
   // Fetches latest queue data and opens a modal with summary stats
   const generateReport = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/queue')
+      const res = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue')
       const q   = await res.json()
       setReport({
         total:     q.length,
@@ -245,7 +245,7 @@ export default function Admin() {
     }
     try {
       const token = localStorage.getItem('token')
-      await fetch(`http://localhost:5000/api/counters/${selectedCounter}/assign`, {
+      await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/counters/${selectedCounter}/assign`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json',Authorization: `Bearer ${token}` },
         body:    JSON.stringify({ agentId: selectedAgent })

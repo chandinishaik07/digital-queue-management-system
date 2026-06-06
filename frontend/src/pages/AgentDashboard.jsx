@@ -47,12 +47,12 @@ export default function AgentDashboard({ user }) {
   const fetchData = useCallback(async () => {
     try {
       // Fetch all queue tokens
-      const qRes = await fetch('http://localhost:5000/api/queue')
+      const qRes = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue')
       const q    = await qRes.json()
       setQueue(Array.isArray(q) ? q : [])
 
       // Fetch all counters to find which one is assigned to this agent
-      const cRes     = await fetch('http://localhost:5000/api/counters')
+      const cRes     = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/counters')
       const counters = await cRes.json()
 
       if (Array.isArray(counters) && user) {
@@ -96,7 +96,7 @@ export default function AgentDashboard({ user }) {
   // ── CALL NEXT TOKEN ────────────────────────────────────
   const callNext = async () => {
     try {
-      const res  = await fetch('http://localhost:5000/api/queue/next', { method: 'PUT' })
+      const res  = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue/next', { method: 'PUT' })
       const data = await res.json()
       showToast(data.message || `Now serving Token #${data.tokenNumber} — ${data.name}`)
       fetchData()
@@ -113,7 +113,7 @@ export default function AgentDashboard({ user }) {
       return
     }
     try {
-      await fetch(`http://localhost:5000/api/queue/${servingToken._id}`, {
+      await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/queue/${servingToken._id}`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ status: 'completed' })
@@ -137,7 +137,7 @@ export default function AgentDashboard({ user }) {
     const newStatus = counterStatus === 'open' ? 'break' : 'open'
 
     try {
-      await fetch(`http://localhost:5000/api/counters/${myCounter._id}/status`, {
+      await fetch(`http://https://queuepro-backend-2pl7.onrender.com/api/counters/${myCounter._id}/status`, {
         method:  'PUT',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ status: newStatus })
@@ -167,7 +167,7 @@ export default function AgentDashboard({ user }) {
     try {
       // Send PUT request to the appointment route
       const res = await fetch(
-        `http://localhost:5000/api/queue/${tokenId}/appointment`,
+        `http://https://queuepro-backend-2pl7.onrender.com/api/queue/${tokenId}/appointment`,
         {
           method:  'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -201,7 +201,7 @@ export default function AgentDashboard({ user }) {
   const clearAppointment = async (tokenId, tokenNumber) => {
     try {
       await fetch(
-        `http://localhost:5000/api/queue/${tokenId}/appointment`,
+        `http://https://queuepro-backend-2pl7.onrender.com/api/queue/${tokenId}/appointment`,
         {
           method:  'PUT',
           headers: { 'Content-Type': 'application/json' },

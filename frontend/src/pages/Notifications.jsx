@@ -29,7 +29,7 @@ export default function Notifications() {
   // Fetches notifications from the backend
   // These are generated from real queue data, not stored separately
   const fetchNotifications = () => {
-    fetch('http://localhost:5000/api/queue/notifications')
+    fetch('http://https://queuepro-backend-2pl7.onrender.com/api/queue/notifications')
       .then(res => res.json())
       .then(data => {
         // Make sure data is an array before setting state

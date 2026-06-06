@@ -50,7 +50,7 @@ export default function Login({ setIsLoggedIn, setIsAdmin, setIsAgent, setUser }
 
     try {
       // Send POST request to backend login route
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('http://https://queuepro-backend-2pl7.onrender.com/api/auth/login', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },  // Tell server we're sending JSON
         body:    JSON.stringify({ email, password })        // Convert object to JSON string
